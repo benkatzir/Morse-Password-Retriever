@@ -6,7 +6,7 @@ Morse Code has been a popular tool in the arsenal of agencies such as the CIA an
 
 ## What it does
 
-Morse Password Retriever allows users to retrieve or rediscover their password via messages in Morse Code. It does this via an Arduino Uno unit connected to a local machine with a USB cable. The C++ Morse Password Retriever sketch (program) resides on the local machine and interacts with the Arduino unit to relay these messages by blinking them out on the built-in LED light on the Arduino board. Short blinks are dots, and dash blinks are three times as long as dot blinks.
+Morse Password Retriever allows users to retrieve or rediscover their password via messages in Morse Code. It does this via an Arduino Uno unit connected to a local machine with a USB cable. The Morse Password Retriever sketch (program written in Arduino Language - similar to C++) resides on the local machine and interacts with the Arduino unit to relay these messages by blinking them out on the built-in LED light on the Arduino board. Short blinks are dots, and dash blinks are three times as long as dot blinks.
 
 A combination of two methods are available to the user to retrieve the password, each designed to help the user recall the password in their distant memory without giving out the full password.
 
@@ -29,14 +29,14 @@ The user is responded to with half their password in Morse. After the Morse resp
 
 We took a systematic approach in building Morse Password Retriever:
 - We discovered how to download the Arduino IDE onto one of our local machines.
-- We discovered how to write Arduino sketches in C++ and how to download sketches onto the board via a USB connection.
+- We discovered how to write Arduino sketches in Arduino Language and how to download sketches onto the board via a USB connection.
 - We did research into Morse code and defined DOT_DURATION, DASH_DURATION, GAP_DURATION, LETTER_GAP, and WORD_GAP in milliseconds.
 - We used ChatGPT to write us blink sequences for each character in Morse Code using our blinkLED function.
 - We worked on a user-friendly UI which is accessed through the Serial Monitor of the Arduino IDE to let the user input and receive Morse responses from the Arduino Uno unit.
 
 ## Challenges we ran into
 
-By far the hardest challenge was to create the UI which allows the user to select between two different methods because we had to get used to collecting and processing input differently than we normally do in regular C++ code. Writing and debugging the UI menu available to the user on the serial port took the bulk of the time.
+By far the hardest challenge was to create the UI which allows the user to select between two different methods because we had to get used to collecting and processing input differently than we normally do in regular C++ code (Arduino Language is almost like C++). Writing and debugging the UI menu available to the user on the serial port took the bulk of the time.
 
 ## Accomplishments that we're proud of
 
@@ -44,7 +44,7 @@ We are proud of being able to come up with a creative idea that we could follow 
 
 ## What we learned
 
-We learned how Morse Code works and we got to explore the capabilities of small but powerful devices such as Raspberry Pis and Arduinos. We learned a whole new way of writing in C++ to communicate with hardware which we’re sure will be useful in the future.
+We learned how Morse Code works and we got to explore the capabilities of small but powerful devices such as Raspberry Pis and Arduinos. We learned a whole new way of writing code in a C++ oriented manner (Arduino Language) to communicate with hardware which we’re sure will be useful in the future.
 
 ## What's next for Morse Password Retriever
 
