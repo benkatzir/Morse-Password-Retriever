@@ -39,7 +39,7 @@ void displayInitialMenu() {
   Serial.println("");
   Serial.println("PASSWORD RETRIEVER:");
   Serial.println("Use one of these methods to retrieve a password.");
-  Serial.println("Enter \"1\" or \"2\":");
+  Serial.println("Enter \"1\" or \"2\" or \"3\":");
   Serial.println("1. Type the password");
   Serial.println("2. Listen to half the password in Morse Code");
   Serial.println("3. to create a password for a new account.");
@@ -174,7 +174,7 @@ void loop() {
           // wait for user input
         }
         accountName = Serial.readStringUntil('\n');
-        accounts[accountIndex] = accountName;
+        accounts[arraySize+1] = accountName;
       
         Serial.println("Type in Morse code password. Press '#' to end input.");
         passwordMorse = "";  // reset password
@@ -213,7 +213,7 @@ void loop() {
             if (endInput == '#') {
               // convert Morse to text
               passwordText = morseToText(passwordMorse);
-              passwords[arraySize-1] = passwordText;
+              passwords[arraySize+1] = passwordText;
               
               Serial.print("Account: ");
               Serial.println(accountName);
@@ -221,7 +221,7 @@ void loop() {
               Serial.println(passwordMorse);
               Serial.print("Password in text: ");
               Serial.println(passwordText);
-
+              arraySize++; // increment array size for nezt account
               accountIndex++; // increment account index for the next account
               break;
             }
@@ -229,9 +229,12 @@ void loop() {
 
           // save the current state as the last state, for the next loop iteration
           lastButtonState = buttonState;
+
         }
+        displayInitialMenu(); // Display the initial menu again
+        mode = 0; // Reset mode for next cycle
       
-      } else {
+      } else if (!selectedMode == 3) {
         Serial.print("YOU: ");
         Serial.println(accounts[input.toInt()-1]);
         Serial.println("Invalid selection. Please try again.");
@@ -260,7 +263,7 @@ void loop() {
           displayInitialMenu(); // Display the initial menu again
           mode = 0; // Reset mode for next cycle
         }
-      } else {
+      } else if (!selectedAccount == 3) {
         Serial.println("PASSWORD RETRIEVER: ");
         Serial.println("Invalid selection. Please try again.");
         displayAccountMenu();
@@ -317,3 +320,6 @@ String morseToText(String morse) {
   
   return result;
 }
+
+
+
