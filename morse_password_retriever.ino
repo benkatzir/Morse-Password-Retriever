@@ -40,9 +40,9 @@ void displayInitialMenu() {
   Serial.println("PASSWORD RETRIEVER:");
   Serial.println("Use one of these methods to retrieve a password.");
   Serial.println("Enter \"1\" or \"2\" or \"3\":");
-  Serial.println("1. Type the password");
-  Serial.println("2. Listen to half the password in Morse Code");
-  Serial.println("3. to create a password for a new account.");
+  Serial.println("1. Type the password.");
+  Serial.println("2. Listen to half the password in Morse Code.");
+  Serial.println("3. To create a password for a new account.");
 }
 
 int arraySize = sizeof(accounts) / sizeof(accounts[0]);
@@ -168,10 +168,10 @@ void loop() {
         displayAccountMenu();
       } else if (selectedMode == 3) {
         
-        
         Serial.println("Write the name of an account to create a password for:");
         while (Serial.available() == 0) {
           // wait for user input
+          delay(10);
         }
         accountName = Serial.readStringUntil('\n');
         accounts[arraySize+1] = accountName;
